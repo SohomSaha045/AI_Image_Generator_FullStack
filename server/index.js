@@ -4,7 +4,7 @@ import cors from 'cors';
 import connectDB from './mongodb/connect.js';
 import postRoutes from './routes/postRoutes.js';
 import dalleRoutes from './routes/dalleRoutes.js';
-
+const PORT = process.env.PORT || 8000;
 dotenv.config();
 
 const app=express();
@@ -20,7 +20,7 @@ app.get('/',async(req,res)=>{
 const startServer = async()=>{
     try{
         connectDB(process.env.MONGODB_URL);
-        app.listen(8080,()=>console.log('Listening to Server at port 8080.....'));
+        app.listen(PORT,()=>console.log(`Listening to Server at port ${PORT} .....`));
     }catch(e){
         console.log(e);
     }
